@@ -614,16 +614,6 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Dancing+Script:wght@500;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-<!-- Add before </body> -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-    emailjs.init("Devyansh"); // Replace with your EmailJS ID
-    document.getElementById("contact-form").addEventListener("submit", function(e) {
-        e.preventDefault();
-        emailjs.sendForm("service_kcbw79p", "template_hoxf9fc", this)
-            .then(() => alert("Message sent!"))
-            .catch(() => alert("Failed. Check console for errors."));
-    });
-</script>
+
 </body>
 </html>
