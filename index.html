@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.cdnfonts.com/css/brown-sugar" rel="stylesheet" />
+<link href="https://fonts.cdnfonts.com/css/brittany-signature" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="./style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escapes Travel Curators</title>
+  <style>
+    /* ===== GLOBAL STYLES ===== */
+    :root {
+      --gold: #D4AF37;
+      --sand: #E3B574;
+      --ivory: #F8F4EC;
+      --text: #333;
+      --navy: #002366;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Lato', sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background: white;
+    }
+    
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+    
+    .cursive {
+      font-family: 'Dancing Script', cursive;
+      color: var(--gold);
+    }
+    
+    .bold {
+      font-weight: 700;
+    }
+    
+    /* ===== LAYOUT ===== */
+    section {
+      min-height: 100vh;
+      padding: 6rem 2rem 4rem;
+    }
+
+    section.hidden {
+      display: none;
+      width: 0;
+      height: 0;
+      min-height: 0 !important;
+    }
+    
+    section.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* ===== NAVIGATION ===== */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: white;
+      z-index: 100;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      color: var(--navy);
+    }
+    
+    .desktop-nav {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .desktop-nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    
+    .desktop-nav a:hover {
+      color: var(--gold);
+    }
+    
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      height: 100vh;
+      background: white;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+      z-index: 999;
+      transition: right 0.3s;
+      padding: 5rem 2rem;
+    }
+    
+    .mobile-nav.active {
+      right: 0;
+    }
+    
+    .mobile-nav a {
+      display: block;
+      padding: 1rem 0;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 1.2rem;
+      border-bottom: 1px solid var(--ivory);
+    }
+    
+    /* ===== HERO SECTION ===== */
+    #home {
+      background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+                  url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover;
+      color: white;
+      display: flex !important;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: rgba(0,0,0,0.6);
+      border-radius: 10px;
+    }
+    
+    .hero-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+    
+    .hero-content p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background: var(--gold);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 2rem;
+      transition: transform 0.3s;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px);
+    }
+    
+    /* ===== SERVICES SECTION ===== */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .service-card {
+      background: var(--ivory);
+      padding: 2rem;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .service-card h3 {
+      color: var(--navy);
+      margin: 1rem 0;
+      font-size: 1.5rem;
+    }
+    
+    .service-card ul {
+      padding-left: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    
+    .service-card li {
+      margin-bottom: 0.5rem;
+    }
+    
+    /* ===== WHY CHOOSE US ===== */
+    #why-us ul {
+      list-style: none;
+      max-width: 800px;
+      margin: 2rem auto;
+    }
+    
+    #why-us li {
+      background: var(--ivory);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--gold);
+    }
+    
+    /* ===== FAQ SECTION ===== */
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .faq-category {
+      margin-bottom: 3rem;
+    }
+    
+    .faq-category h3 {
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gold);
+    }
+    
+    .faq-item {
+      margin-bottom: 1.5rem;
+    }
+    
+    .faq-question {
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    
+    /* ===== CONTACT SECTION ===== */
+    .contact-info {
+      margin: 2rem 0;
+      font-size: 1.1rem;
+    }
+    
+    .inquiry-form {
+      max-width: 500px;
+      margin: 2rem auto;
+    }
+    
+    .inquiry-form input,
+    .inquiry-form textarea,
+    .inquiry-form button {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 1rem;
+      border: 1px solid var(--sand);
+      border-radius: 5px;
+      font-family: 'Lato', sans-serif;
+    }
+    
+    .inquiry-form textarea {
+      min-height: 150px;
+    }
+    
+    .inquiry-form button {
+      background: var(--gold);
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    
+    .inquiry-form button:hover {
+      background: var(--navy);
+    }
+    
+    /* ===== WHATSAPP BUTTON ===== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+      transition: transform 0.3s;
+    }
+    
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+    
+    /* ===== MOBILE STYLES ===== */
+    @media (max-width: 768px) {
+      .desktop-nav {
+        display: none;
+      }
+      
+      .hamburger {
+        display: block;
+      }
+      
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      
+      section {
+        padding: 5rem 1.5rem 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Replace the entire header section with this: -->
+<header>
+  <div class="logo-container">
+    <img src="assets/logo.png" alt="Escapes Travel Curators" class="logo-icon">
+    <div class="logo-text">
+      <span class="escapes">Escapes</span><br />
+      <span class="travel-curators">Travel Curators</span>
+    </div>
+  </div>
+  
+  <!-- Desktop Navigation -->
+  <nav class="desktop-nav">
+    <a href="#home" data-section="home">Home</a>
+    <a href="#services" data-section="services">Services</a>
+    <a href="#why-us" data-section="why-us">Why Choose Us</a>
+    <a href="#faqs" data-section="faqs">FAQs</a>
+    <a href="#contact" data-section="contact">Contact</a>
+  </nav>
+  
+  <!-- Mobile Menu Button -->
+  <button class="hamburger">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--navy)">
+      <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2"/>
+    </svg>
+  </button>
+</header>
+
+<!-- Mobile Navigation (outside header) -->
+<nav class="mobile-nav">
+  <button class="close-menu">×</button>
+  <a href="#home">Home</a>
+  <a href="#services">Services</a>
+  <a href="#why-us">Why Choose Us</a>
+  <a href="#faqs">FAQs</a>
+  <a href="#contact">Contact</a>
+</nav>
+  <!-- Home Section -->
+  <section id="home" class="active">
+    <div class="hero-content container">
+      <h1>Welcome to <span class="cursive">Escapes Travel Curators</span></h1>
+      <p class="bold">Your one-stop destination for unforgettable travel experiences.</p>
+      <p>At Escapes, we specialize in crafting seamless journeys with a personalized touch. Whether you're dreaming of a luxurious beach escape, a cultural adventure, or a quick business trip, we've got you covered — from visas and flights to villas and curated land packages.</p>
+      <p> We are experts in both domestic and international travel, offering tailor-made itineraries that suit every style and budget.</p>
+      <p class="cursive" style="font-size: 1.5rem;">Crafting trips with love and care, Escapes makes every journey rare.</p>
+      <a href="#contact" class="cta-button">Plan Your Escape</a>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="service-grid">
+        <!-- Visa Assistance -->
+        <div class="service-card">
+          <h3>Visa Assistance</h3>
+          <p>Stress-free visa processing with expert support — we guide you through the requirements, documentation, and application process for countries across the globe.</p>
+        </div>
+        
+        <!-- Flight Bookings -->
+        <div class="service-card">
+          <h3>Flight Bookings</h3>
+          <p>Get access to the best flight deals and flexible options to suit your schedule and budget — domestic and international.</p>
+        </div>
+        
+        <!-- Hotel & Villa Bookings -->
+        <div class="service-card">
+          <h3>Hotel & Villa Bookings</h3>
+          <p>From premium hotels to exclusive villas, we offer stays that match your style, comfort, and price point — anywhere in the world.</p>
+        </div>
+        
+        <!-- Tailored Land Packages -->
+        <div class="service-card">
+          <h3>Tailored Land Packages</h3>
+          <p>Explore cities like a local with our handpicked land packages. These include:</p>
+          <ul>
+            <li>Attraction tickets</li>
+            <li>City tours</li>
+            <li>Guided experiences</li>
+            <li>Adventure activities</li>
+          </ul>
+        </div>
+        
+        <!-- Car Services -->
+        <div class="service-card">
+          <h3>Car Services</h3>
+          <p>Private transfers, chauffeur-driven cars, or self-drive options — we ensure you travel in comfort from arrival to departure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section id="why-us">
+    <div class="container">
+      <h2>Why Choose Escapes Travel Curators?</h2>
+      <ul>
+        <li><span class="bold">Personalized Planning:</span> Every itinerary is designed around your needs, pace, and preferences.</li>
+        <li><span class="bold">Competitive Pricing:</span> Enjoy unbeatable deals without compromising on quality.</li>
+        <li><span class="bold">End-to-End Support:</span> From your first inquiry to your return home, we're with you every step of the way.</li>
+        <li><span class="bold">Global Network:</span> Trusted partners across the world to ensure smooth and secure travel.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+<section id="faqs">
+  <div class="container faq-container">
+    <h2>FAQs – Escapes TravelCurators</h2>
+    
+    <!-- General Services -->
+    <div class="faq-category">
+      <h3>💼 General Services</h3>
+      
+      <div class="faq-item">
+        <div class="faq-question">Q1. What services does Escapes TravelCurators provide?</div>
+        <p>We offer complete travel solutions including visa assistance, flight bookings, hotel and villa reservations, land packages with tours and attraction tickets, and car services — all curated to your preferences.</p>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">Q2. Can I book a full travel package through Escapes?</div>
+        <p>Yes, we offer all-inclusive travel packages customized to your needs — including flights, stays, transportation, sightseeing, and even dining experiences.</p>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">Q3. Do you provide international travel services or just within India?</div>
+        <p>We provide travel services globally — including international and domestic destinations.</p>
+      </div>
+    </div>
+    
+    <!-- Flights & Visa -->
+    <div class="faq-category">
+      <h3>✈️ Flights & Visa</h3>
+      
+      <div class="faq-item">
+        <div class="faq-question">Q4. Do you help with visa processing?</div>
+        <p>Yes, we offer visa assistance for multiple countries, guiding you through the documentation, appointment booking, and submission process.</p>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">Q5. Can you help me get urgent flight bookings?</div>
+        <p>Absolutely! We specialize in both last-minute and advance bookings at competitive rates.</p>
+      </div>
+    </div>
+    
+    <!-- Hotels & Villas -->
+    <div class="faq-category">
+      <h3>🏨 Hotels, Villas & Stays</h3>
+      
+      <div class="faq-item">
+        <div class="faq-question">Q6. What type of accommodations can I book through you?</div>
+        <p>From luxury villas to boutique hotels, we offer a wide range of options to suit your style and budget, both in India and abroad.</p>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">Q7. Do you provide refundable booking options?</div>
+        <p>Yes, we offer both refundable and non-refundable options depending on your preference and availability.</p>
+      </div>
+    </div>
+    
+    <!-- Land Packages -->
+    <div class="faq-category">
+      <h3>🚗 Land Packages & Transportation</h3>
+      
+      <div class="faq-item">
+        <div class="faq-question">Q8. What is included in your land packages?</div>
+        <p>Our land packages can include hotel stays, guided tours, activity passes, attraction tickets, local transport, and more — customized for your destination.</p>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">Q9. Do you offer car rentals with drivers?</div>
+        <p>Yes, we provide chauffeur-driven and self-drive cars in most destinations, including airport transfers and sightseeing vehicles.</p>
+      </div>
+    </div>
+    
+    <!-- Booking Process -->
+    <div class="faq-category">
+      <h3>📝 Booking Process & Payments</h3>
+      
+      <div class="faq-item">
+        <div class="faq-question">Q10. How do I start planning my trip with Escapes?</div>
+        <p>You can contact us via WhatsApp, phone, or email. We'll understand your travel needs and suggest the best options with a personalized itinerary.</p>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">Q11. What payment methods do you accept?</div>
+        <p>We accept payments via bank transfer, UPI, credit/debit cards, and selected payment gateways, depending on your location.</p>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">Q12. Can I make part payments or EMI options?</div>
+        <p>Yes, we offer flexible payment plans for selected bookings — ask us for details when planning your trip.</p>
+      </div>
+    </div>
+    
+    <!-- Support -->
+    <div class="faq-category">
+      <h3>🛟 Support & Emergencies</h3>
+      
+      <div class="faq-item">
+        <div class="faq-question">Q13. What if I face issues during my trip?</div>
+        <p>Our team is available on call and WhatsApp to support you with any issues that arise — from rebookings to emergency assistance.</p>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">Q14. Do you offer 24/7 support?</div>
+        <p>While our office hours are standard, we are available for urgent travel assistance on WhatsApp and call whenever needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2>Get in Touch</h2>
+      <div class="contact-info">
+        <p>Let's turn your travel dreams into reality.</p>
+        <p>📧 Escapestravelcurators@gmail.com</p>
+        <p>📞 +91 9780091116</p>
+        <p>📍 Based in India, serving travellers worldwide.</p>
+      </div>
+      
+      <form class="inquiry-form" action="https://formspree.io/f/mqaqooan" method="POST">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="message" placeholder="Your travel plans..." required></textarea>
+    <button type="submit">Send Inquiry</button>
+</form>
+
+    </div>
+  </section>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/919780091116" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp" style="font-size: 30px; color: white;"></i>
+</a>
+
+  <!-- JavaScript -->
+  <script>
+    // Mobile Menu Toggle
+    document.querySelector('.hamburger').addEventListener('click', function() {
+      document.querySelector('.mobile-nav').classList.toggle('active');
+    });
+    document.querySelector('.close-menu').addEventListener('click', function() {
+      document.querySelector('.mobile-nav').classList.remove('active');
+    });
+
+    // Improved Hash Routing
+    function handleRoute() {
+      const hash = window.location.hash || "#home";
+      const sections = document.querySelectorAll('section');
+      
+      // Hide all sections
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      // Hide home on other pages
+      if (hash != "#home") {
+        document.querySelector("#home").classList.add("hidden");
+      } 
+
+      if (hash == "#home") {
+        document.querySelector("#home").classList.remove("hidden");
+      }
+
+      // Show current section
+      const activeSection = document.querySelector(hash);
+      if (activeSection) {
+        activeSection.classList.add('active');
+        
+        // Close mobile menu if open
+        document.querySelector('.mobile-nav').classList.remove('active');
+        
+        // Smooth scroll to section
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    // Initialize with timeout to ensure DOM is ready
+    setTimeout(() => {
+      handleRoute();
+      window.addEventListener('hashchange', handleRoute);
+    }, 100);
+
+    // Form Submission
+    document.querySelector('.inquiry-form')?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Inquiry submitted! We\'ll contact you soon.');
+      this.reset();
+    });
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Dancing+Script:wght@500;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<!-- Add before </body> -->
+</body>
+</html>
