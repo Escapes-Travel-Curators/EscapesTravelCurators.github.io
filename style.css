@@ -1,0 +1,145 @@
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  transition: transform 0.3s;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+/* ===== Fix Section Visibility ===== */
+section:not(.active) {
+  display: none !important;
+}
+
+/* Hide homepage intro when other sections are active */
+
+#home.active .hero-content {
+  opacity: 1;
+  transition: opacity 0.5s 0.3s; /* Fade-in with delay */
+}
+
+/* Section Visibility Control */
+section {
+  display: none !important;
+  opacity: 0;
+  height: 0 !important;
+  transition: opacity 0.3s ease;
+}
+section.active {
+  display: block !important;
+  opacity: 1;
+}
+
+/* Prevent zoom on input focus */
+input, textarea {
+  font-size: 16px !important;
+}
+
+/* Fix sticky hover states */
+@media (hover: none) {
+  .whatsapp-float:active {
+    transform: scale(0.95);
+  }
+}
+
+/* ===== Menu Close Button ===== */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+.close-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Hide mobile menu by default */
+.mobile-nav {
+  display: none;
+}
+
+/* Show only on mobile */
+@media (max-width: 768px) {
+  .mobile-nav.active {
+    display: block;
+  }
+}
+
+/* ===== Logo Fix ===== */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  max-width: 400px; /* Strict width limit */
+  height: 4rem; /* Fixed height */
+}
+
+.logo-icon {
+  width: 10rem;
+  height: 5rem;
+  object-fit: contain;
+}
+
+.escapes {
+  font-family: 'Brown Sugar';
+  font-size: 1.3rem; /* Reduced from 1.5rem */
+  color: #5E3023;
+  line-height: 1;
+}
+
+.travel-curators {
+  font-family: 'Brittany', sans-serif;
+  font-size: 0.9rem; /* Reduced from 1.1rem */
+  color: #5E3023;
+  margin-top: -3px;
+}
+
+/* Mobile scaling */
+@media (max-width: 768px) {
+  .logo-container {
+    max-width: 350px;
+    height: 40px;
+  }
+  .logo-icon {
+    width: 10rem;
+    height: 4rem;
+    object-fit: contain;
+  }
+  .escapes {
+    font-size: 1.1rem;
+  }
+  .travel-curators {
+    font-size: 0.8rem;
+  }
+}
+header {
+  padding: 10px 15px;
+  overflow: hidden; /* Contain any overflow */
+}
