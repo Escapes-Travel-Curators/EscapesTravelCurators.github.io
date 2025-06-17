@@ -4,12 +4,12 @@
   right: 20px;
   width: 60px;
   height: 60px;
-  background: #25D366;
+  background: #25d366;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   transition: transform 0.3s;
 }
@@ -42,7 +42,8 @@ section.active {
 }
 
 /* Prevent zoom on input focus */
-input, textarea {
+input,
+textarea {
   font-size: 16px !important;
 }
 
@@ -55,29 +56,29 @@ input, textarea {
 
 /* ===== Menu Close Button ===== */
 .mobile-menu {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    z-index: 1000;
-    padding: 20px;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 1000;
+  padding: 20px;
 }
 
 .mobile-menu.active {
-    display: block;
+  display: block;
 }
 
 .close-menu {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 24px;
-    background: none;
-    border: none;
-    cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 /* Hide mobile menu by default */
@@ -108,16 +109,16 @@ input, textarea {
 }
 
 .escapes {
-  font-family: 'Brown Sugar';
+  font-family: "Brown Sugar";
   font-size: 1.3rem; /* Reduced from 1.5rem */
-  color: #5E3023;
+  color: #5e3023;
   line-height: 1;
 }
 
 .travel-curators {
-  font-family: 'Brittany', sans-serif;
+  font-family: "Brittany", sans-serif;
   font-size: 0.9rem; /* Reduced from 1.1rem */
-  color: #5E3023;
+  color: #5e3023;
   margin-top: -3px;
 }
 
