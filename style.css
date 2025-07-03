@@ -151,8 +151,7 @@ header {
   flex-wrap: wrap; /* Allow cards to wrap to the next line on smaller screens */
   justify-content: center; /* Center the cards horizontally */
   gap: 2rem; /* Increased gap, similar to service grid gap */
-  margin-top: 4rem; /* Space above the cards from the hero content */
-  padding: 0 2rem; /* Adjust padding for better spacing on larger screens */
+  padding: 0 2rem 4rem; /* Adjust padding for better spacing on larger screens */
   max-width: 1200px; /* Match container max-width to your .container class for consistency */
   margin-left: auto; /* Center the container */
   margin-right: auto; /* Center the container */
@@ -205,7 +204,7 @@ header {
 /* Responsive adjustments for contact cards */
 @media (max-width: 768px) { /* Use 768px as a general breakpoint for mobile */
   .contact-cards-container {
-    padding: 0 1rem; /* Adjust padding for smaller screens */
+    padding: 0 1rem 2rem; /* Adjust padding for smaller screens */
     gap: 1.5rem; /* Slightly reduce gap on smaller screens */
   }
   .contact-card {
