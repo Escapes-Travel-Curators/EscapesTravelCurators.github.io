@@ -163,15 +163,15 @@
         text-align: center;
       }
 
-      #home.active > .hero-image {
+      /* #home.active > .hero-image {
         width: calc(100vw - 1.5rem);
-        height: 90vh;
+        /* height: 90vh;
         max-height: 160rem;
         position: sticky;
         z-index: -1;
         background-image: url("assets/hero3l.png");
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: contain;
         background-position: center;
         background-attachment: fixed;
       }
@@ -180,14 +180,33 @@
         #home.active > .hero-image {
           background-image: url("assets/hero3.png");
         }
-      }
+      } */
 
-      #home.active > .hero-image > p {
-        width: 100%;
-        height: 100vh;
+      #home.active > .hero-image > img {
+        width: calc(100vw - 1.5rem);
+        height: 90vh;
         background: none;
+        max-height: 160rem;
+        position: sticky;
+        z-index: -1;
+        object-fit: cover;
+        object-position: center;
       }
 
+      #home .hero-image-small {
+        display: none;
+      }
+      #home .hero-image-large {
+        display: block;
+      }
+      @media screen and (max-width: 768px) {
+        #home .hero-image-small {
+          display: block;
+        }
+        #home .hero-image-large {
+          display: none;
+        }
+      }
       #home.active {
         display: flex !important;
       }
@@ -447,7 +466,8 @@
     <!-- Home Section -->
     <section id="home" class="active">
       <div class="hero-image">
-        <p></p>
+        <img class="hero-image-small" src="assets/hero3.png" alt="Hero Image" />
+        <img class="hero-image-large" src="assets/hero3l.png" alt="Hero Image Large" />
       </div>
       <div class="hero-content container">
         <h1>Welcome to <span class="cursive">Escapes Travel Curators</span></h1>
