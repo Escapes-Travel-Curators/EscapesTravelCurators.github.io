@@ -337,10 +337,12 @@ p { color: var(--muted); line-height: 1.75; }
 }
 
 .brand img {
-  width: 48px;
-  height: 48px;
-  border-radius: 10px;
-  object-fit: cover;
+  height: 52px;
+  width: auto;
+  max-width: 130px;
+  border-radius: 8px;
+  object-fit: contain;
+  object-position: left center;
 }
 
 .brand-text { display: grid; line-height: 1.1; }
@@ -564,6 +566,8 @@ p { color: var(--muted); line-height: 1.75; }
   height: clamp(360px, 50vh, 620px);
   animation: floatA 9s ease-in-out infinite;
   z-index: 3;
+  /* Reserve space immediately so browser starts layout before image loads */
+  background: rgba(13, 33, 55, 0.06);
 }
 
 .hero-photo-b {
@@ -573,6 +577,7 @@ p { color: var(--muted); line-height: 1.75; }
   height: clamp(220px, 32vh, 380px);
   animation: floatB 12s ease-in-out infinite;
   z-index: 2;
+  background: rgba(13, 33, 55, 0.06);
 }
 
 .hero-photo-c {
@@ -582,6 +587,7 @@ p { color: var(--muted); line-height: 1.75; }
   height: clamp(170px, 22vh, 280px);
   animation: floatC 14s ease-in-out infinite;
   z-index: 4;
+  background: rgba(13, 33, 55, 0.06);
 }
 
 /* ─── HERO CONTENT ──────────────────────────────────────────── */

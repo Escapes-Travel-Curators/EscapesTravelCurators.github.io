@@ -68,8 +68,8 @@ const revealObserver = new IntersectionObserver((entries) => {
     }
   });
 }, {
-  threshold: 0.1,
-  rootMargin: '0px 0px -48px 0px'
+  threshold: 0,
+  rootMargin: '0px 0px -30px 0px'
 });
 
 revealItems.forEach(el => revealObserver.observe(el));
@@ -368,18 +368,22 @@ if (window.innerWidth > 768 && !prefersReducedMotion) {
 }
 
 // ════════════════════════════════════════════════════════════
-// HERO — TYPED EYEBROW ANIMATION (subtle, one-time)
+// HERO — STAGGERED ENTRANCE ANIMATION
 // ════════════════════════════════════════════════════════════
 (function initHeroEntrance() {
-  const heroCopy = document.querySelector('.hero-copy');
+  const heroCopy = document.getElementById('hero-copy');
   if (!heroCopy) return;
 
-  // Stagger hero elements in on load
+  // Only animate if user hasn't asked for reduced motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Stagger each direct child element of hero-copy
   const elements = heroCopy.querySelectorAll('.eyebrow, h1, .hero-sub, .hero-actions');
   elements.forEach((el, i) => {
     el.style.opacity = '0';
-    el.style.transform = 'translateY(24px)';
-    el.style.transition = `opacity 700ms ease ${200 + i * 120}ms, transform 700ms ease ${200 + i * 120}ms`;
+    el.style.transform = 'translateY(22px)';
+    el.style.transition = `opacity 650ms ease ${180 + i * 100}ms, transform 650ms ease ${180 + i * 100}ms`;
+    // Double-RAF ensures the browser has painted the initial state before animating
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         el.style.opacity = '1';
@@ -388,16 +392,16 @@ if (window.innerWidth > 768 && !prefersReducedMotion) {
     });
   });
 
-  // Also animate the hero card
+  // Animate hero card with a slight extra delay
   const heroCard = document.getElementById('hero-card');
   if (heroCard) {
     heroCard.style.opacity = '0';
     heroCard.style.transform = 'translateY(28px)';
-    heroCard.style.transition = 'opacity 700ms ease 800ms, transform 700ms ease 800ms';
+    heroCard.style.transition = 'opacity 700ms ease 680ms, transform 700ms ease 680ms';
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        heroCard.style.opacity = '';
-        heroCard.style.transform = '';
+        heroCard.style.opacity = '1';
+        heroCard.style.transform = 'translateY(0)';
       });
     });
   }
