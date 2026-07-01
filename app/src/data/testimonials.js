@@ -1,0 +1,42 @@
+export const testimonials = [
+  {
+    id: 'review-riya',
+    stars: 5,
+    quote: 'Our Maldives honeymoon was absolutely perfect. Every detail — flights, resort, transfers — was handled seamlessly. We literally just showed up and enjoyed every moment.',
+    avatarLetter: 'R',
+    name: 'Riya & Karan M.',
+    trip: 'Honeymoon — Maldives',
+  },
+  {
+    id: 'review-aditya',
+    stars: 5,
+    quote: 'The Europe itinerary they built was nothing like what you see on other sites. Prague, Vienna, Santorini — all in 12 days and completely stress-free. Genuinely impressed.',
+    avatarLetter: 'A',
+    name: 'Aditya S.',
+    trip: 'Family Trip — Europe',
+  },
+  {
+    id: 'review-priya',
+    stars: 5,
+    quote: 'Visa was the most stressful part for us. They walked us through every document, followed up proactively, and it came through without a single issue. Highly recommend.',
+    avatarLetter: 'P',
+    name: 'Priya N.',
+    trip: 'Schengen Visa — France & Italy',
+  },
+  {
+    id: 'review-varun',
+    stars: 5,
+    quote: 'Last-minute business trip to Dubai — flights booked, hotel arranged, airport transfer confirmed, all within 3 hours of reaching out. Exceptional turnaround and service.',
+    avatarLetter: 'V',
+    name: 'Varun T.',
+    trip: 'Business Travel — Dubai',
+  },
+  {
+    id: 'review-sunita',
+    stars: 5,
+    quote: 'The Bali villa they suggested was way beyond what we expected for the price. Their network gets you access to things you simply cannot find on booking platforms. Worth every rupee.',
+    avatarLetter: 'S',
+    name: 'Sunita & Raj K.',
+    trip: 'Villa Stay — Bali',
+  },
+];
