@@ -36,7 +36,12 @@ export default function Header() {
     <>
       <header className={`site-header${scrolled ? ' is-scrolled' : ''}`} data-header>
         <a className="brand" href="#home" aria-label="Escapes Travel Curators — home">
-          <img src="/EscapesTravelCurators.github.io/assets/logo with etc.jpg" alt="ETC Logo" />
+          <img
+            src="/EscapesTravelCurators.github.io/assets/logo with etc.jpg"
+            alt="ETC Logo"
+            loading="eager"
+            fetchPriority="high"
+          />
           <span className="brand-text">
             <strong>Escapes</strong>
             <small>Travel Curators</small>

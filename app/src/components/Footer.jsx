@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="container footer-layout">
         <div className="footer-brand">
           <a className="brand" href="#home">
-            <img src="/EscapesTravelCurators.github.io/assets/logo with etc.jpg" alt="ETC Logo" />
+            <img src="/EscapesTravelCurators.github.io/assets/logo with etc.jpg" alt="ETC Logo" loading="lazy" />
             <span className="brand-text">
               <strong>Escapes</strong>
               <small>Travel Curators</small>

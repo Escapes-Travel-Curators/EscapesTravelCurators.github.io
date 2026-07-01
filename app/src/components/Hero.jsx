@@ -13,8 +13,9 @@ export default function Hero() {
     const els = heroCopy.querySelectorAll('.eyebrow, h1, .hero-sub, .hero-actions');
     els.forEach((el, i) => {
       el.style.opacity  = '0';
-      el.style.transform = 'translateY(22px)';
-      el.style.transition = `opacity 650ms ease ${180 + i * 100}ms, transform 650ms ease ${180 + i * 100}ms`;
+      el.style.transform = 'translateY(18px)';
+      // 300ms snappy — only opacity + transform (GPU-composited)
+      el.style.transition = `opacity 320ms ease ${100 + i * 80}ms, transform 320ms ease ${100 + i * 80}ms`;
       requestAnimationFrame(() =>
         requestAnimationFrame(() => {
           el.style.opacity  = '1';
@@ -26,8 +27,8 @@ export default function Hero() {
     const heroCard = document.getElementById('hero-card');
     if (heroCard) {
       heroCard.style.opacity   = '0';
-      heroCard.style.transform = 'translateY(28px)';
-      heroCard.style.transition = 'opacity 700ms ease 680ms, transform 700ms ease 680ms';
+      heroCard.style.transform = 'translateY(22px)';
+      heroCard.style.transition = 'opacity 350ms ease 480ms, transform 350ms ease 480ms';
       requestAnimationFrame(() =>
         requestAnimationFrame(() => {
           heroCard.style.opacity   = '1';
@@ -42,13 +43,31 @@ export default function Hero() {
       {/* Floating photo collage */}
       <div className="hero-photos" aria-hidden="true">
         <div className="hero-photo hero-photo-a" data-speed="0.12">
-          <img src="/EscapesTravelCurators.github.io/assets/images/travel4.jpg" alt="" fetchPriority="high" decoding="async" />
+          <img
+            src="/EscapesTravelCurators.github.io/assets/images/travel4.jpg"
+            alt=""
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+          />
         </div>
         <div className="hero-photo hero-photo-b" data-speed="0.22">
-          <img src="/EscapesTravelCurators.github.io/assets/images/travel5.jpg" alt="" fetchPriority="high" decoding="async" />
+          <img
+            src="/EscapesTravelCurators.github.io/assets/images/travel5.jpg"
+            alt=""
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+          />
         </div>
         <div className="hero-photo hero-photo-c" data-speed="0.08">
-          <img src="/EscapesTravelCurators.github.io/assets/images/travel6.jpg" alt="" fetchPriority="high" decoding="async" />
+          <img
+            src="/EscapesTravelCurators.github.io/assets/images/travel6.jpg"
+            alt=""
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+          />
         </div>
       </div>
 
