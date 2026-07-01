@@ -56,6 +56,9 @@ html {
   scroll-behavior: smooth;
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -63,9 +66,17 @@ body {
   background: var(--cream);
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.6;
+  width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 img { display: block; max-width: 100%; }
@@ -308,6 +319,7 @@ p { color: var(--muted); line-height: 1.75; }
   align-items: center;
   gap: 16px;
   width: min(1200px, calc(100% - 28px));
+  max-width: calc(100vw - 28px);
   min-height: var(--header-h);
   padding: 10px 16px 10px 20px;
   border: 1px solid rgba(255, 255, 255, 0.55);
@@ -1621,17 +1633,26 @@ p { color: var(--muted); line-height: 1.75; }
 @media (max-width: 768px) {
   :root { --header-h: 64px; }
 
+  .site-header {
+    width: calc(100vw - 24px);
+    max-width: calc(100vw - 24px);
+    gap: 12px;
+  }
+
   /* ── Hero: full-bleed background image on mobile ── */
   .hero {
     background:
       linear-gradient(to bottom, rgba(13, 33, 55, 0.68) 0%, rgba(13, 33, 55, 0.38) 50%, rgba(13, 33, 55, 0.78) 100%),
       url('assets/images/travel4.jpg') center / cover no-repeat;
+    width: 100%;
+    max-width: 100vw;
     min-height: 100svh;
   }
 
   .hero-photos { display: none; }
 
   .hero-inner {
+    width: 100%;
     max-width: 100%;
     padding: calc(var(--header-h) + 56px) clamp(20px, 5vw, 32px) 80px;
     justify-content: flex-end;
@@ -1639,6 +1660,11 @@ p { color: var(--muted); line-height: 1.75; }
   }
 
   .hero-copy .eyebrow { color: var(--gold-lt); }
+  .hero-copy,
+  .hero-card {
+    min-width: 0;
+  }
+
   .hero-copy h1 { color: #fff; font-size: clamp(36px, 9vw, 56px); }
   .hero-sub { color: rgba(255, 255, 255, 0.78); }
 
