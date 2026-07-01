@@ -1,43 +1,78 @@
-document.addEventListener('DOMContentLoaded', function () {
-  // Mobile menu toggle
-  const hamburger = document.querySelector('.hamburger');
-  const mobileNav = document.querySelector('.mobile-nav');
-  const closeBtn = document.querySelector('.close-menu');
+const header = document.querySelector("[data-header]");
+const menuToggle = document.querySelector(".menu-toggle");
+const mobilePanel = document.querySelector(".mobile-panel");
+const closeMenu = document.querySelector(".close-menu");
+const mobileLinks = document.querySelectorAll(".mobile-panel a");
+const revealItems = document.querySelectorAll(".reveal");
+const form = document.querySelector("#inquiry-form");
+const formStatus = document.querySelector(".form-status");
 
-  hamburger.addEventListener('click', function () {
-    mobileNav.classList.add('active');
-  });
+function setMenu(open) {
+  mobilePanel.classList.toggle("is-open", open);
+  menuToggle.setAttribute("aria-expanded", String(open));
+  document.body.style.overflow = open ? "hidden" : "";
+}
 
-  closeBtn.addEventListener('click', function () {
-    mobileNav.classList.remove('active');
-  });
+menuToggle?.addEventListener("click", () => setMenu(true));
+closeMenu?.addEventListener("click", () => setMenu(false));
+mobileLinks.forEach((link) => link.addEventListener("click", () => setMenu(false)));
 
-  // Close menu when clicking links
-  document.querySelectorAll('.mobile-nav a').forEach(link => {
-    link.addEventListener('click', function () {
-      mobileNav.classList.remove('active');
+window.addEventListener("scroll", () => {
+  header?.classList.toggle("is-scrolled", window.scrollY > 24);
+});
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.18 }
+);
+
+revealItems.forEach((item) => observer.observe(item));
+
+document.querySelectorAll("details").forEach((item) => {
+  item.addEventListener("toggle", () => {
+    if (!item.open) return;
+    document.querySelectorAll("details[open]").forEach((openItem) => {
+      if (openItem !== item) openItem.open = false;
     });
   });
+});
 
-  // Section navigation
-  document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = this.getAttribute('href');
+form?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const submitButton = form.querySelector("button");
+  const data = {
+    name: form.elements.name.value,
+    email: form.elements.email.value,
+    description: form.elements.message.value,
+  };
 
-      // Hide all sections
-      document.querySelectorAll('section').forEach(section => {
-        section.classList.remove('active');
-      });
+  formStatus.textContent = "Sending your travel brief...";
+  submitButton.disabled = true;
 
-      // Show target section
-      document.querySelector(target).classList.add('active');
-
-      // Scroll to top
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+  try {
+    const response = await fetch("https://formspree.io/f/xanorwal", {
+      body: JSON.stringify(data),
+      headers: {
+        Accept: "*/*",
+        "Content-Type": "application/json",
+      },
+      method: "POST",
     });
-  });
 
-  // Show home section by default
-  document.querySelector('#home').classList.add('active');
+    if (!response.ok) throw new Error("Form submission failed");
+
+    form.reset();
+    formStatus.textContent = "Inquiry sent. We will contact you soon.";
+  } catch (error) {
+    formStatus.textContent = "Could not send right now. Please WhatsApp or call us.";
+  } finally {
+    submitButton.disabled = false;
+  }
 });
